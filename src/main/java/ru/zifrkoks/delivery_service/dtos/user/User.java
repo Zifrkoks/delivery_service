@@ -51,6 +51,8 @@ public class User {
 
     //внешние ключи one to one------------------------------------------------------
 
+    @OneToOne(mappedBy = "user")
+    private Basket basket;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userdate_id",referencedColumnName = "id")
@@ -90,4 +92,5 @@ public class User {
 
     @ManyToMany(mappedBy = "users")
     private List<City> cities = new ArrayList<>();
+
 }

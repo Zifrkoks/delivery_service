@@ -1,8 +1,11 @@
 package ru.zifrkoks.delivery_service.dtos.store;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -43,8 +46,8 @@ public class Product {
 
     //внешние ключи one to many------------------------------------------------------
 
-    @OneToMany(mappedBy = "product")
-    private List<ProductReview> review = new ArrayList<>();
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<ProductReview> review = new HashSet<>();
 
     //внешние ключи many to one------------------------------------------------------
 
@@ -66,7 +69,7 @@ public class Product {
         inverseJoinColumns = 
             @JoinColumn(name = "user_id", referencedColumnName = "id")
     )
-    private List<User> usersMarkedProductFavorite = new ArrayList<>();
+    private Set<User> usersMarkedProductFavorite = new HashSet<>();
 
 
 

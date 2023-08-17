@@ -12,6 +12,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,12 +33,11 @@ public class Store {
 
     private String description;
 
-    @Column(nullable = false)
-    private String address;
-
     private int rating;
     //внешние ключи one to one------------------------------------------------------
 
+    @OneToOne(mappedBy = "store", cascade = CascadeType.ALL)
+    private StoreData storeData;
 
     //внешние ключи one to many------------------------------------------------------
 

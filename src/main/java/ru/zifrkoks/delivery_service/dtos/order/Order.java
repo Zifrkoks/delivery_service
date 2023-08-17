@@ -1,8 +1,11 @@
 package ru.zifrkoks.delivery_service.dtos.order;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -33,7 +36,7 @@ public class Order {
 
 
     //внешние ключи one to one------------------------------------------------------
-    @OneToOne(mappedBy = "order")
+    @OneToOne(mappedBy = "order",cascade = CascadeType.ALL)
     private OrderDetails orderDetails;
     
 
@@ -41,8 +44,8 @@ public class Order {
     //внешние ключи one to many------------------------------------------------------
     
     
-    @OneToMany(mappedBy = "order")
-    private List<OrderItem> orderItems = new ArrayList<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private Set<OrderItem> orderItems = new HashSet<>();
 
 
     //внешние ключи many to one------------------------------------------------------
