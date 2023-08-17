@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -12,6 +14,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.zifrkoks.delivery_service.dtos.courier.Courier;
 import ru.zifrkoks.delivery_service.dtos.store.Store;
 import ru.zifrkoks.delivery_service.dtos.user.User;
 
@@ -24,6 +27,9 @@ public class Order {
     @Id
     private long id;
 
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status = OrderStatus.CREATED;
+
 
 
     //внешние ключи one to one------------------------------------------------------
@@ -33,6 +39,8 @@ public class Order {
 
 
     //внешние ключи one to many------------------------------------------------------
+    
+    
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
@@ -50,8 +58,21 @@ public class Order {
     private Store store;
 
 
+    @ManyToOne
+    @JoinColumn(name = "courier_id",referencedColumnName = "id")
+    private Courier courier;
+
     //внешние ключи many to one------------------------------------------------------
 
-    
-    
+
+    public enum OrderStatus {
+        ERROR,
+        CENCELED,
+        CREATED,
+        PREPARE,
+        PREPARED,
+        IN_DELIVERY,
+        DELIVERED,
+        COMPLETED,
+    }
 }

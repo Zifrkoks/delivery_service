@@ -1,6 +1,5 @@
-package ru.zifrkoks.delivery_service.dtos.order;
+package ru.zifrkoks.delivery_service.dtos.courier;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -10,37 +9,37 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "courier_data")
 @Data
-@Table(name = "orders_details")
 @NoArgsConstructor
-public class OrderDetails {
-
+public class CourierData {
     @Id
     private long id;
 
+    private String name;
 
-    @Column(nullable = false)
-    private long sumCast;
+    private String surname;
+
+    private String patronymic;
+
+    private String passportData;
+
+    private boolean isActive;
+
+    private boolean isVerifiedAccount;
+
+    //внешние ключи one to one------------------------------------------------------
 
 
-    @Column(nullable = false)
-    private boolean isCash;
-
-
-    private String message;
+    @OneToOne
+    @JoinColumn(name = "courier_id", referencedColumnName = "id")
+    private Courier courier;
 
 
     
-    //внешние ключи one to one------------------------------------------------------
-    @OneToOne
-    @JoinColumn(name = "order_id", referencedColumnName = "id")
-    private Order order;
-
     //внешние ключи one to many------------------------------------------------------
 
     //внешние ключи many to one------------------------------------------------------
 
     //внешние ключи many to many------------------------------------------------------
-
-
 }

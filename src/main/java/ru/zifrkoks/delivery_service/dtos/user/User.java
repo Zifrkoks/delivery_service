@@ -15,8 +15,12 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.zifrkoks.delivery_service.dtos.address.City;
 import ru.zifrkoks.delivery_service.dtos.order.Order;
+import ru.zifrkoks.delivery_service.dtos.store.Product;
+import ru.zifrkoks.delivery_service.dtos.store.ProductReview;
 import ru.zifrkoks.delivery_service.dtos.store.Store;
+import ru.zifrkoks.delivery_service.dtos.store.StoreReview;
 
 @Entity
 @Data
@@ -43,7 +47,7 @@ public class User {
     @Column(name = "phone",unique = true, nullable = false)
     private String phone;
 
-
+    private String address;
 
     //внешние ключи one to one------------------------------------------------------
 
@@ -56,8 +60,17 @@ public class User {
     //внешние ключи one to many------------------------------------------------------
 
 
+
+    @OneToMany(mappedBy = "author")
+    private List<ProductReview> productReviews = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "author")
+    private List<StoreReview> storeReviews = new ArrayList<>();
+
+
     @OneToMany(mappedBy = "customer")
-    List<Order> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
 
     //внешние ключи many to one------------------------------------------------------
@@ -71,4 +84,10 @@ public class User {
 
     @ManyToMany(mappedBy = "usersMarkedStoreFavorite")
     private List<Store> favoriteStores = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "usersMarkedProductFavorite")
+    private List<Product> favoriteProducts = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "users")
+    private List<City> cities = new ArrayList<>();
 }
