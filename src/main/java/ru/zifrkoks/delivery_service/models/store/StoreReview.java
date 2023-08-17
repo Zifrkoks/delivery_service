@@ -1,39 +1,47 @@
-package ru.zifrkoks.delivery_service.dtos.address;
+package ru.zifrkoks.delivery_service.models.store;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.zifrkoks.delivery_service.models.user.User;
 
 @Entity
-@Table(name = "coutries")
+@Table(name = "stores_reviews")
 @Data
 @NoArgsConstructor
-public class Country {
+public class StoreReview {
     
     @Id
     private long id;
 
-    @Column(nullable = false)
-    private String name;
+    private String text;
 
+    private int rating;
+
+    private LocalDateTime CreatedAt;
 
     //внешние ключи one to one------------------------------------------------------
-    
+
+
     //внешние ключи one to many------------------------------------------------------
 
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
-    private Set<City> cities = new HashSet<>();
+
+    
     //внешние ключи many to one------------------------------------------------------
+
+    @ManyToOne
+    @JoinColumn(name = "store_id", referencedColumnName = "id")
+    private Store store;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User author;
 
     //внешние ключи many to many------------------------------------------------------
 }

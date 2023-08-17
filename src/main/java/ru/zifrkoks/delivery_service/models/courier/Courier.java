@@ -1,4 +1,5 @@
-package ru.zifrkoks.delivery_service.dtos.store;
+package ru.zifrkoks.delivery_service.models.courier;
+
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,68 +10,51 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.zifrkoks.delivery_service.dtos.user.User;
-
+import ru.zifrkoks.delivery_service.models.address.City;
+import ru.zifrkoks.delivery_service.models.order.Order;
 @Entity
+@Table(name = "couriers")
 @Data
 @NoArgsConstructor
-@Table(name = "products")
-public class Product {
+public class Courier {
+    
     @Id
     private long id;
 
+    private String username;
 
-    private int cost;
-
-
-    private String name;
-
-
-    private String description;
-
+    private String password;
 
     private int rating;
 
 
-    
     //внешние ключи one to one------------------------------------------------------
+    
+    
+    @OneToOne(mappedBy = "courier", cascade = CascadeType.ALL)
+    private CourierData courierData;
 
 
 
     //внешние ключи one to many------------------------------------------------------
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private Set<ProductReview> review = new HashSet<>();
-
+    @OneToMany(mappedBy = "courier")
+    private Set<Order> orders = new HashSet<>();
+    
     //внешние ключи many to one------------------------------------------------------
 
-
     @ManyToOne
-    @JoinColumn(name = "store_id", referencedColumnName = "id")
-    private Store store;
-
-
-
+    @JoinColumn(name = "city_id", referencedColumnName = "id")
+    private City city;
     //внешние ключи many to many------------------------------------------------------
 
-
-    @ManyToMany
-    @JoinTable(
-        name = "users_and_favorite_products",
-        joinColumns = 
-            @JoinColumn(name = "product_id", referencedColumnName = "id"),
-        inverseJoinColumns = 
-            @JoinColumn(name = "user_id", referencedColumnName = "id")
-    )
-    private Set<User> usersMarkedProductFavorite = new HashSet<>();
-
-
-
+    
+    
 }

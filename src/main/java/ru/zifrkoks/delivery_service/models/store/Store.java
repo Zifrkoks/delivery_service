@@ -1,4 +1,4 @@
-package ru.zifrkoks.delivery_service.dtos.store;
+package ru.zifrkoks.delivery_service.models.store;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +16,9 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.zifrkoks.delivery_service.dtos.address.City;
-import ru.zifrkoks.delivery_service.dtos.order.Order;
-import ru.zifrkoks.delivery_service.dtos.user.User;
+import ru.zifrkoks.delivery_service.models.address.City;
+import ru.zifrkoks.delivery_service.models.order.Order;
+import ru.zifrkoks.delivery_service.models.user.User;
 
 @Entity
 @Data

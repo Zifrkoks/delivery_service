@@ -1,4 +1,4 @@
-package ru.zifrkoks.delivery_service.dtos.store;
+package ru.zifrkoks.delivery_service.models.store;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

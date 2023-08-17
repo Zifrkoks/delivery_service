@@ -1,4 +1,4 @@
-package ru.zifrkoks.delivery_service.dtos.user;
+package ru.zifrkoks.delivery_service.models.user;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +15,12 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.zifrkoks.delivery_service.dtos.address.City;
-import ru.zifrkoks.delivery_service.dtos.order.Order;
-import ru.zifrkoks.delivery_service.dtos.store.Product;
-import ru.zifrkoks.delivery_service.dtos.store.ProductReview;
-import ru.zifrkoks.delivery_service.dtos.store.Store;
-import ru.zifrkoks.delivery_service.dtos.store.StoreReview;
+import ru.zifrkoks.delivery_service.models.address.City;
+import ru.zifrkoks.delivery_service.models.order.Order;
+import ru.zifrkoks.delivery_service.models.store.Product;
+import ru.zifrkoks.delivery_service.models.store.ProductReview;
+import ru.zifrkoks.delivery_service.models.store.Store;
+import ru.zifrkoks.delivery_service.models.store.StoreReview;
 
 @Entity
 @Data
@@ -51,7 +51,7 @@ public class User {
 
     //внешние ключи one to one------------------------------------------------------
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     private Basket basket;
 
     @OneToOne(cascade = CascadeType.ALL)

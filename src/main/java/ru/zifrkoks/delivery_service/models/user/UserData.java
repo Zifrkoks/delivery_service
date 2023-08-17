@@ -1,4 +1,4 @@
-package ru.zifrkoks.delivery_service.dtos.user;
+package ru.zifrkoks.delivery_service.models.user;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

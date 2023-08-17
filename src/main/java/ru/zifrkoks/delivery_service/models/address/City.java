@@ -1,4 +1,4 @@
-package ru.zifrkoks.delivery_service.dtos.address;
+package ru.zifrkoks.delivery_service.models.address;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,9 +17,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.zifrkoks.delivery_service.dtos.courier.Courier;
-import ru.zifrkoks.delivery_service.dtos.store.Store;
-import ru.zifrkoks.delivery_service.dtos.user.User;
+import ru.zifrkoks.delivery_service.models.courier.Courier;
+import ru.zifrkoks.delivery_service.models.store.Store;
+import ru.zifrkoks.delivery_service.models.user.User;
 
 @Entity
 @Table(name = "cities")
