@@ -1,7 +1,7 @@
 package ru.zifrkoks.delivery_service.models.user;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -33,7 +33,7 @@ public class Basket {
     //внешние ключи one to many------------------------------------------------------
 
     @OneToMany(mappedBy = "basket", cascade = CascadeType.ALL)
-    private List<BasketItem> basketItems = new ArrayList<>();
+    private Set<BasketItem> basketItems = new HashSet<>();
     //внешние ключи many to one------------------------------------------------------
 
 

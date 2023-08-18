@@ -9,6 +9,6 @@ import ru.zifrkoks.delivery_service.models.user.User;
 
 public interface UserRepository extends JpaRepository<User,Long> {
     public User findByUsername(String username);
-    @Query("select e from users where e.username = :username and e.password = :password")
+    @Query("select e from User e where e.username = :username and e.password = :password")
     public User tryToAuthorize(@Param("username")String username,@Param("password")String password);
 }

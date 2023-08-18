@@ -1,7 +1,7 @@
 package ru.zifrkoks.delivery_service.models.store;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -42,15 +42,15 @@ public class Store {
 
 
     @OneToMany(mappedBy = "store")
-    private List<Order> orders = new ArrayList<>();
+    private Set<Order> orders = new HashSet<>();
 
 
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
-    private List<Product> products = new ArrayList<>();
+    private Set<Product> products = new HashSet<>();
     
     
     @OneToMany(mappedBy = "store", cascade =  CascadeType.ALL)
-    private List<StoreReview> storeReviews = new ArrayList<>();
+    private Set<StoreReview> storeReviews = new HashSet<>();
     //внешние ключи many to one------------------------------------------------------
 
     
@@ -65,7 +65,7 @@ public class Store {
             @JoinColumn(name = "store_id", referencedColumnName = "id"),
         inverseJoinColumns = 
             @JoinColumn(name = "user_id", referencedColumnName = "id"))
-    private List<User> usersMarkedStoreFavorite = new ArrayList<>();
+    private Set<User> usersMarkedStoreFavorite = new HashSet<>();
 
 
     @ManyToMany
@@ -74,5 +74,5 @@ public class Store {
         @JoinColumn(name = "store_id", referencedColumnName = "id"),
     inverseJoinColumns = 
         @JoinColumn(name = "city_id", referencedColumnName = "id"))
-    private List<City> cities = new ArrayList<>();
+    private Set<City> cities = new HashSet<>();
 }

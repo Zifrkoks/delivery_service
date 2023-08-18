@@ -1,7 +1,7 @@
 package ru.zifrkoks.delivery_service.models.user;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -64,15 +64,15 @@ public class User {
 
 
     @OneToMany(mappedBy = "author")
-    private List<ProductReview> productReviews = new ArrayList<>();
+    private Set<ProductReview> productReviews = new HashSet<>();
 
 
     @OneToMany(mappedBy = "author")
-    private List<StoreReview> storeReviews = new ArrayList<>();
+    private Set<StoreReview> storeReviews = new HashSet<>();
 
 
     @OneToMany(mappedBy = "customer")
-    private List<Order> orders = new ArrayList<>();
+    private Set<Order> orders = new HashSet<>();
 
 
     //внешние ключи many to one------------------------------------------------------
@@ -85,12 +85,12 @@ public class User {
 
 
     @ManyToMany(mappedBy = "usersMarkedStoreFavorite")
-    private List<Store> favoriteStores = new ArrayList<>();
+    private Set<Store> favoriteStores = new HashSet<>();
 
     @ManyToMany(mappedBy = "usersMarkedProductFavorite")
-    private List<Product> favoriteProducts = new ArrayList<>();
+    private Set<Product> favoriteProducts = new HashSet<>();
 
     @ManyToMany(mappedBy = "users")
-    private List<City> cities = new ArrayList<>();
+    private Set<City> cities = new HashSet<>();
 
 }
