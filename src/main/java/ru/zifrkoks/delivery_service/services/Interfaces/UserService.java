@@ -1,16 +1,29 @@
-package ru.zifrkoks.delivery_service.services.Interfaces;
+package ru.zifrkoks.delivery_service.services.interfaces;
 
 import org.springframework.stereotype.Service;
+
+import ru.zifrkoks.delivery_service.dtos.request.*;
+
+import ru.zifrkoks.delivery_service.dtos.response.*;
+
 
 
 
 
 @Service
-public interface UserService {
+public interface UserService extends AccountService {
     
-    public boolean signUp(SignUpDto signUp);
+    public CreateOrderResponse createOrder(CreateOrderRequest request);
 
-    public boolean signIn(SignInDto signIn);
+    public CencelOrderResponse cencelOrder(CencelOrderRequest request);
 
-    public boolean signOut(SignOutDto signOut);
+    public ProductsResponse getProductsInCity(ProductsRequest request);
+
+    public StoresResponse getStoresInCity(StoresRequest request);
+
+    public GetOrderResponse getOrder(GetOrderRequest request);
+
+    public GetMyOrdersResponse getMyOrders(GetMyOrdersRequest request);
+
+    
 }
