@@ -21,9 +21,8 @@ public interface UserService extends AccountService {
 
     public StoresResponse getStoresInCity(StoresRequest request);
 
-    public GetOrderResponse getOrder(GetOrderRequest request);
+    public CreateProductReviewResponse createProductReview(CreateProductReviewRequest request);
 
-    public GetMyOrdersResponse getMyOrders(GetMyOrdersRequest request);
+    public CreateStoreReviewResponse createStoreReview(CreateStoreReviewRequest request);
 
-    
 }

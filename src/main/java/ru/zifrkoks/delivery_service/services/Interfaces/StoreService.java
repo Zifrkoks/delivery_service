@@ -8,6 +8,10 @@ import ru.zifrkoks.delivery_service.dtos.response.*;
 
 @Service
 public interface StoreService extends AccountService {
-    
-    
+
+    public CreateProductResponse createProduct(CreateProductRequest request);
+
+    public SetStoreDataResponse setStoreData(SetStoreDataRequest request);
+
+
 }
