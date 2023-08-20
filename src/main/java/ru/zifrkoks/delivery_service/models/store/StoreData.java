@@ -18,6 +18,11 @@ public class StoreData {
     private long id;
 
     @Column(nullable = false)
+    private String name;
+
+    private String description;
+    
+    @Column(nullable = false)
     private String address;
 
     private String email;

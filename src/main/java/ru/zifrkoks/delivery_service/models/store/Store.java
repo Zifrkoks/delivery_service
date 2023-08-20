@@ -27,10 +27,14 @@ public class Store {
     @Id
     private long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(nullable = false,unique = true)
+    private String username;
 
-    private String description;
+
+    @Column(nullable = false)
+    private String password;
+
+    
 
     private int rating;
     //внешние ключи one to one------------------------------------------------------

@@ -11,4 +11,12 @@ public interface AccountService {
     public SignInResponse signIn(SignInRequest request);
 
     public SignOutResponse signOut(SignOutRequest request);
+    
+    public GetOrderResponse getOrder(GetOrderRequest request);
+
+    public GetOrdersResponse getOrders(GetOrdersRequest request);
+
+    public GetActiveOrdersResponse getActiveOrders(GetActiveOrdersRequest request);
+
+    public ForwardOrderResponse forwardOrder(ForwordOrderRequest request);
 }
