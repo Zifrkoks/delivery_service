@@ -9,7 +9,8 @@ import ru.zifrkoks.delivery_service.dtos.response.*;
 @Service
 public interface CourierService extends AccountService {
 
-    public FindNearestOrderResponse findNearestOrder(FindNearestOrderRequest request);
+    public FindNearestOrdersResponse findNearestOrder(FindNearestOrdersRequest request);
 
-    
+    public TakeOrderResponse takeOrder(TakeOrderRequest request);
+
 }

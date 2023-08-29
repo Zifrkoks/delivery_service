@@ -32,11 +32,11 @@ public class User {
     private String id;
 
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false,unique = true,length = 30)
     private String username;
 
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     private String password;
 
 

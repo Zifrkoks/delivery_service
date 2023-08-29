@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -24,13 +25,21 @@ public class Courier {
     
     @Id
     private long id;
-
+    @Column(nullable = false,unique = true,length = 30)
     private String username;
-
+    
+    @Column(nullable = false, length = 30)
     private String password;
 
     private int rating;
 
+
+    @Column(name = "email",unique = true)
+    private String email;
+
+
+    @Column(name = "phone",unique = true, nullable = false)
+    private String phone;
 
     //внешние ключи one to one------------------------------------------------------
     

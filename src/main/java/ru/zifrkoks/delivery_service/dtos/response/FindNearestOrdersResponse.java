@@ -1,5 +1,5 @@
 package ru.zifrkoks.delivery_service.dtos.response;
 
-public class FindNearestOrderResponse {
+public class FindNearestOrdersResponse {
 
 }

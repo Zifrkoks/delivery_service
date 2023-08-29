@@ -25,9 +25,6 @@ public class StoreData {
     @Column(nullable = false)
     private String address;
 
-    private String email;
-
-    private String number;
 
     private String socialNetworks;
 
