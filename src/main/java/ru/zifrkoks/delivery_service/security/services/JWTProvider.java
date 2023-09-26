@@ -14,7 +14,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 import ru.zifrkoks.delivery_service.security.models.JWTUser;
 
-@Service
+
 public class JWTProvider {
     @Value("${app.jwt.secret}")
     String secret;
